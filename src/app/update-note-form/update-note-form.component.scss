@@ -1,0 +1,70 @@
+.app-update-note-form-container {
+    height: 100%;
+}
+
+.app-update-note-form-header {
+    border-bottom: black 1px solid;
+    padding: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.app-update-note-form-body {
+    padding: 20px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.app-update-note-form-buttons {
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+.app-text-container {
+    margin-top: 5px;
+}
+
+.app-author-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-text-textarea {
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+p.app-update-note-read-text {
+    height: 300px;
+    width: 100%;
+    background: lightgray;
+    padding: 20px 20px 0 20px;
+    margin: 0;
+    overflow: auto;
+    box-sizing: border-box;
+    word-break: break-word;
+    cursor: pointer;
+}
+
+.app-form-button {
+    width: 100px;
+    cursor: pointer;
+}
+
+.app-form-button:disabled {
+    cursor: not-allowed;
+}
+
+.app-update-note-form-buttons {
+    width: 220px;
+}
+
+.app-close-button {
+    margin-right: 20px;
+}

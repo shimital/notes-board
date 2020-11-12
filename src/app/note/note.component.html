@@ -1,0 +1,16 @@
+<div 
+    class="app-note-container" 
+    [ngStyle]="{'backgroundColor': background}"
+    (click)="onClick()">
+    
+    <div *ngIf="text" class="app-delete-note-container">
+        <span class="app-note-author" *ngIf="author" [ngStyle]="{'backgroundColor': background}">{{author}}</span>
+        <span (click)="onDelete($event)" title="delete" [ngStyle]="{'color': 'red'}" class="material-icons app-delete-button">
+            push_pin
+        </span>
+    </div>
+    <p *ngIf="text" class="app-note-text-container">{{text}}</p>
+    <div class="app-content-slot">
+        <ng-content></ng-content>
+    </div>
+</div>

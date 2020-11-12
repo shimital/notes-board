@@ -1,0 +1,27 @@
+<div class="app-grid-container">
+    
+    <div class="app-notes-grid">
+        <app-note 
+            (onNoteClick)="handleNoteClick($event)" 
+            [background]="'#FFF'">
+            <div>
+                <button class="app-new-note-button">
+                    <span ng class="app-new-note-add-icon material-icons">
+                        add_circle_outline
+                    </span>
+                </button>
+            </div>
+        </app-note>
+        <app-note 
+            *ngFor="let note of notes; let i = index"
+            [background]="note.background"
+            [text]="note.text"
+            (onNoteClick)="handleNoteClick($event, i)"
+            (onNoteDelete)="handleNoteDelete(i)"
+            [author]="note.author"
+        >
+        </app-note>
+    </div>
+</div>
+
+

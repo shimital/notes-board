@@ -1,0 +1,43 @@
+<div class="app-form-note-form-container">
+    <div class="app-update-note-form-header">
+        A note from {{author}}
+    </div>
+    <form (ngSubmit)="updateNote()" #noteForm="ngForm">
+        <div class="app-update-note-form-body">
+            <textarea 
+                #textAreaInput
+                class="app-text-textarea"
+                rows="4" 
+                cols="50"
+                name="text"
+                required
+                (blur)="onBlur()"
+                (ngModelChange)="onTextChange()"
+                [hidden]="!isEdit"
+                [(ngModel)]="text"
+            >
+            </textarea>
+            <p 
+                class="app-update-note-read-text" 
+                (click)="switchToEditMode()"
+                [hidden]="isEdit">
+                {{text}}
+            </p>
+            <div class="app-update-note-form-buttons">
+                <button 
+                    class="app-form-button app-close-button" 
+                    type="button"
+                    (click)="closeModal()">
+                    Close
+                </button>
+                <button
+                    class="app-form-button"
+                    type="submit"
+                    [disabled]="!(noteForm.form.valid && isDirty)">
+                    Update
+                </button>
+            </div>
+        </div>
+    </form> 
+    
+</div>

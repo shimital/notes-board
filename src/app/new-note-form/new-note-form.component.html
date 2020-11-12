@@ -1,0 +1,45 @@
+<div class="app-new-note-form-container">
+    <div class="app-new-note-form-header">
+        Post a new note
+    </div>
+    <form (ngSubmit)="addNote()" #noteForm="ngForm">
+        <div class="app-new-note-form-body">
+            <div>Author Name</div> 
+            <div class="app-author-field-container">
+                <input 
+                    type="text"
+                    required
+                    name="author"
+                    class="app-author-input"
+                    [(ngModel)]="author"
+                >
+            </div>
+            <div class="app-textarea-field-name">What would you like to say?</div> 
+            <div class="app-author-textarea-container">
+                <textarea 
+                    class="app-text-textarea" 
+                    rows="4" 
+                    cols="50"
+                    name="text"
+                    required
+                    [(ngModel)]="text" 
+                >
+                </textarea>
+            </div>
+            <div class="app-new-note-form-buttons">
+                <button
+                    type="submit"
+                    class="app-form-button app-close-button" 
+                    (click)="closeModal()">
+                    Close
+                </button>
+                <button 
+                    class="app-form-button"
+                    [disabled]="!noteForm.form.valid">
+                    Post
+                </button>
+            </div>
+        </div>
+    </form> 
+    
+</div>

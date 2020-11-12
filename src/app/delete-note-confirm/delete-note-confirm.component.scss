@@ -1,0 +1,24 @@
+.app-confirm-delete-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.app-delete-note-form-buttons {
+    width: 220px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.app-form-button {
+    width: 100px;
+    cursor: pointer;
+}
+
+.app-yes-button {
+    margin-right: 0;
+}

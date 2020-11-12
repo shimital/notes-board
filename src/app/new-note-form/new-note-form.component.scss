@@ -1,0 +1,65 @@
+.app-new-note-form-container {
+    height: 100%;
+}
+
+.app-new-note-form-header {
+    border-bottom: black 1px solid;
+    padding: 8px;
+}
+
+.app-new-note-form-body {
+    padding: 20px 20px;
+    height: 540px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.app-new-note-form-buttons {
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+.app-author-field-container {
+    margin-top: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-author-textarea-container {
+    margin-top: 5px;
+}
+
+.app-author-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-textarea-field-name {
+    margin-top: 15px;
+}
+
+.app-text-textarea {
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.app-form-button {
+    width: 100px;
+    cursor: pointer;
+}
+
+.app-form-button:disabled {
+    cursor: not-allowed;
+}
+
+.app-new-note-form-buttons {
+    width: 220px;
+}
+
+.app-close-button {
+    margin-right: 20px;
+}

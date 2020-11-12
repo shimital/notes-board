@@ -1,0 +1,47 @@
+
+<form (ngSubmit)="login()" #loginForm="ngForm">
+    <div class="app-login-form-container">
+        <div>
+            <div>
+                username
+            </div>
+            <div>
+                <input 
+                    required 
+                    class="app-login-form-input" 
+                    type="text"
+                    name="username"
+                    [(ngModel)]="username"
+                >
+            </div>
+        </div>
+        
+        <div class="app-login-form-pass-container">
+            <div>
+                password
+            </div>
+            <div>
+                <input 
+                    required 
+                    name="password"
+                    class="app-login-form-input" 
+                    type="password"
+                    [(ngModel)]="password"
+                >
+            </div>
+        </div>
+
+        <div class="app-login-error-message" *ngIf="isError">
+            username or password are incorrect
+        </div>
+    
+        <button 
+            class="app-login-button" 
+            type="submit"
+            [disabled]="!loginForm.valid"
+        >
+            Login
+        </button>
+    </div>
+    
+</form>
