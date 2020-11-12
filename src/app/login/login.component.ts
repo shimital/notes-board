@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './login.component.html',
     styleUrls: [ './login.component.scss' ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
     constructor (
         private readonly auth: AuthService,
@@ -18,9 +18,6 @@ export class LoginComponent implements OnInit {
     password: string = '';
 
     isError: boolean = false;
-
-    ngOnInit (): void {
-    }
 
     login (): void {
         if (this.auth.checkAndDoLogin(this.username, this.password)) {

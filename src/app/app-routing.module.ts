@@ -4,7 +4,6 @@ import { BoardGuard } from './board.guard';
 import { LoginComponent } from './login/login.component';
 import { NotesDisplayComponent } from './notes-display/notes-display.component';
 
-
 const routes: Routes = [
     {
         path: '',

@@ -16,7 +16,6 @@ export class NotesService {
 
         const notes = JSON.parse(sessionNotes);
 
-        // make sure that the list is sorted by date
         return notes.sort((n1: INote, n2: INote) => {
             return new Date(n2.date).getTime() - new Date(n1.date).getTime();
         });

@@ -6,14 +6,11 @@ import { MatDialogRef } from '@angular/material/dialog';
     templateUrl: './delete-note-confirm.component.html',
     styleUrls: [ './delete-note-confirm.component.scss' ]
 })
-export class DeleteNoteConfirmComponent implements OnInit {
+export class DeleteNoteConfirmComponent {
 
     constructor (private dialogRef: MatDialogRef<DeleteNoteConfirmComponent>) { }
 
     isDelete = new EventEmitter();
-
-    ngOnInit (): void {
-    }
 
     closeDialog (confirmDelete: boolean): void {
         this.isDelete.emit(confirmDelete);
