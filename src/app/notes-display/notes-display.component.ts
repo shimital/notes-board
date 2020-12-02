@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { INote, NotesService } from '../notes.service';
-import { MatDialog } from '@angular/material/dialog';
 import { NewNoteFormComponent } from '../new-note-form/new-note-form.component';
 import { UpdateNoteFormComponent } from '../update-note-form/update-note-form.component';
 import { DeleteNoteConfirmComponent } from '../delete-note-confirm/delete-note-confirm.component';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
     selector: 'app-notes-display',
@@ -14,7 +14,7 @@ export class NotesDisplayComponent implements OnInit {
 
     constructor (
         private readonly notesService: NotesService,
-        private readonly matDialog: MatDialog
+        private readonly dialogService: DialogService
     ) { }
 
     notes: INote[] = [];
@@ -36,62 +36,60 @@ export class NotesDisplayComponent implements OnInit {
     }
 
     private openNewNoteForm (): void {
-        const dialogRef = this.matDialog.open(NewNoteFormComponent, {
-            width: '600px',
-            height: '600px'
-        });
-
-        dialogRef.componentInstance
-            .onNoteAdd.subscribe((note: INote) => {
-                if (note.author) {
+        const dialogRef = this.dialogService.open({
+            component: NewNoteFormComponent,
+            width: 600,
+            height: 600,
+            outputs: {
+                onClose: () => {
+                    this.dialogService.close();
+                },
+                onNoteAdd: (note: INote) => {
                     this.notesService.addNote(note);
                     this.notes = this.notesService.getNotes();
+                    this.dialogService.close();
                 }
-            });
-
-        dialogRef.afterClosed().subscribe(() => {
-            dialogRef.componentInstance.onNoteAdd.unsubscribe();
+            }
         });
     }
 
     private openUpdateNoteForm (note: INote, index: number): void {
-        const dialogRef = this.matDialog.open(UpdateNoteFormComponent, {
-            width: '600px',
-            height: '600px',
-            data: {
+        const dialogRef = this.dialogService.open({
+            component: UpdateNoteFormComponent,
+            width: 600,
+            height: 600,
+            inputs: {
                 author: note.author,
                 text: note.text
-            }
-        });
-
-        const updateNoteSubscription = dialogRef.componentInstance
-            .onNoteUpdate.subscribe((note: INote) => {
-                if (note.text) {
+            },
+            outputs: {
+                onClose: () => {
+                    this.dialogService.close();
+                },
+                onNoteUpdate: (note: INote) => {
                     this.notesService.updateNode(index, note);
                     this.notes = this.notesService.getNotes();
+                    this.dialogService.close();
                 }
-            });
-
-        dialogRef.afterClosed().subscribe(() => {
-            dialogRef.componentInstance.onNoteUpdate.unsubscribe();
+            }
         });
     }
 
     private openConfirmDelete (index: number): void {
-        const dialogRef = this.matDialog.open(DeleteNoteConfirmComponent, {
-            width: '350px',
-            height: '200px',
-        });
-
-        dialogRef.componentInstance.isDelete.subscribe((isDelete: boolean) => {
-            if (isDelete) {
-                this.notesService.deleteNote(index);
-                this.notes = this.notesService.getNotes();
+        const dialogRef = this.dialogService.open({
+            component: DeleteNoteConfirmComponent,
+            width: 350,
+            height: 200,
+            outputs: {
+                onClose: () => {
+                    this.dialogService.close();
+                },
+                onDelete: () => {
+                    this.notesService.deleteNote(index);
+                    this.notes = this.notesService.getNotes();
+                    this.dialogService.close();
+                }
             }
-        });
-
-        dialogRef.afterClosed().subscribe(() => {
-            dialogRef.componentInstance.isDelete.unsubscribe();
         });
     }
 

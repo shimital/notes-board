@@ -1,5 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-new-note-form',
@@ -8,12 +7,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class NewNoteFormComponent {
 
-    constructor (private dialogRef: MatDialogRef<NewNoteFormComponent>) { }
+    constructor () { }
+
+    @Output() onNoteAdd = new EventEmitter();
+    @Output() onClose = new EventEmitter();
 
     author: string = '';
     text: string = '';
-
-    onNoteAdd = new EventEmitter();
 
     private pastelColors = [
         '#FDDFDF',
@@ -32,11 +32,10 @@ export class NewNoteFormComponent {
         };
 
         this.onNoteAdd.emit(note);
-        this.dialogRef.close();
     }
 
-    closeModal (): void {
-        this.dialogRef.close();
+    close (): void {
+        this.onClose.emit();
     }
 
     private getColor (): string {

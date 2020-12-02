@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Inject, ViewChild, ElementRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, EventEmitter, ViewChild, ElementRef, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-update-note-form',
@@ -8,23 +7,20 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class UpdateNoteFormComponent {
 
-    constructor (
-        private dialogRef: MatDialogRef<UpdateNoteFormComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: DialogData
-    ) { }
+    constructor () { }
 
-    author: string = '';
-    text: string = '';
+    @Input() author: string;
+    @Input() text: string;
+
+    @Output() onNoteUpdate = new EventEmitter();
+    @Output() onClose = new EventEmitter();
+
     isEdit = false;
     isDirty = false;
 
     @ViewChild('textAreaInput') textArea: ElementRef;
 
-    onNoteUpdate = new EventEmitter();
-
     ngOnInit (): void {
-        this.author = this.data.author;
-        this.text = this.data.text;
     }
 
     updateNote (): void {
@@ -35,7 +31,6 @@ export class UpdateNoteFormComponent {
         };
 
         this.onNoteUpdate.emit(note);
-        this.dialogRef.close();
     }
 
     switchToEditMode (): void {
@@ -50,8 +45,8 @@ export class UpdateNoteFormComponent {
         this.isEdit = false;
     }
 
-    closeModal (): void {
-        this.dialogRef.close();
+    close (): void {
+        this.onClose.emit();
     }
 
     onTextChange (): void {

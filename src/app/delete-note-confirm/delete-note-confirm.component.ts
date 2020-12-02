@@ -1,5 +1,4 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
     selector: 'app-delete-note-confirm',
@@ -8,13 +7,17 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DeleteNoteConfirmComponent {
 
-    constructor (private dialogRef: MatDialogRef<DeleteNoteConfirmComponent>) { }
+    constructor () { }
 
-    isDelete = new EventEmitter();
+    @Output() onDelete = new EventEmitter();
+    @Output() onClose = new EventEmitter();
 
-    closeDialog (confirmDelete: boolean): void {
-        this.isDelete.emit(confirmDelete);
-        this.dialogRef.close();
+    close (): void {
+        this.onClose.emit();
+    }
+
+    delete (): void {
+        this.onDelete.emit();
     }
 
 }

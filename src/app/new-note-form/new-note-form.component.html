@@ -4,7 +4,7 @@
     </div>
     <form (ngSubmit)="addNote()" #noteForm="ngForm">
         <div class="app-new-note-form-body">
-            <div>Author Name</div> 
+            <div>Author Name</div>
             <div class="app-author-field-container">
                 <input 
                     type="text"
@@ -30,7 +30,7 @@
                 <button
                     type="submit"
                     class="app-form-button app-close-button" 
-                    (click)="closeModal()">
+                    (click)="close()">
                     Close
                 </button>
                 <button 

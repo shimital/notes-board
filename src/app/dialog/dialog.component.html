@@ -1,0 +1,9 @@
+<div class="overlay">
+    <div 
+        class="dialog" 
+        (click)="$event.stopPropagation()"
+        [ngStyle]="{'height.px': height, 'width.px': width}"
+    >
+      <ng-template appInsertion> </ng-template>
+    </div>
+</div>
