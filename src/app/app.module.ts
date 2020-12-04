@@ -12,6 +12,7 @@ import { UpdateNoteFormComponent } from './update-note-form/update-note-form.com
 import { DeleteNoteConfirmComponent } from './delete-note-confirm/delete-note-confirm.component';
 import { LoginComponent } from './login/login.component';
 import { DialogModule } from './dialog/dialog.module';
+import { EllipsisDirective } from './ellipsis.directive';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { DialogModule } from './dialog/dialog.module';
         NewNoteFormComponent,
         UpdateNoteFormComponent,
         DeleteNoteConfirmComponent,
-        LoginComponent
+        LoginComponent,
+        EllipsisDirective
     ],
     imports: [
         BrowserModule,

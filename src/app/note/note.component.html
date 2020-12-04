@@ -1,8 +1,8 @@
 <div 
     class="app-note-container" 
     [ngStyle]="{'backgroundColor': background}"
-    (click)="onClick()">
-    
+    (click)="onClick()"
+    >
     <div *ngIf="text" class="app-delete-note-container">
         <span class="app-note-author" *ngIf="author" [ngStyle]="{'backgroundColor': background}">
             {{author}}
@@ -15,7 +15,9 @@
             </svg>
         </span>
     </div>
-    <p *ngIf="text" class="app-note-text-container">{{text}}</p>
+    <p *ngIf="text" class="app-note-text-container" appEllipsis>
+        {{text}}
+    </p>
     <div class="app-content-slot">
         <ng-content></ng-content>
     </div>

@@ -4,21 +4,24 @@
     height: 190px;
     border: 2px black solid;
     border-radius: 3px;
-    padding: 10px;
+    padding: 10px 1em 10px 10px;
     box-sizing: border-box;
     cursor: pointer;
 }
 
 .app-note-text-container {
-    max-height: calc(7 * 1.5 * 1em );
-    overflow: hidden;
-    height: 100%;
     position: relative;
     margin-top: 0;
     box-sizing: border-box;
     word-break: break-word;
     line-height: 1.5;
     font-size: 16px;
+}
+
+.app-ellipsis {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .app-content-slot {
