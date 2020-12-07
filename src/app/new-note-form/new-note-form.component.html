@@ -28,12 +28,13 @@
             </div>
             <div class="app-new-note-form-buttons">
                 <button
-                    type="submit"
+                    type="button"
                     class="app-form-button app-close-button" 
                     (click)="close()">
                     Close
                 </button>
                 <button 
+                    type="submit"
                     class="app-form-button"
                     [disabled]="!noteForm.form.valid">
                     Post
